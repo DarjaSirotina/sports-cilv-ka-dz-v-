@@ -1,51 +1,52 @@
-class Exercise:
-    def __init__(self, name, sets, reps):
-        self.name = name
-        self.sets = sets
-        self.reps = reps
+class Vingrinajums:
+    def __init__(self, nosaukums, seti, atkartojums):
+        self.nosaukums = nosaukums
+        self.seti = seti
+        self.atkartojums = atkartojums
 
     def __str__(self):
-        return f"{self.name}: {self.sets} sets of {self.reps} reps"
+        return f"{self.nosaukums}: {self.seti} seti pa {self.atkartojums} atkārībām"
 
 
-class TrainingPlan:
+class TreninsPlans:
     def __init__(self):
-        self.exercises = []
+        self.vingrinajumi = []
 
-    def add_exercise(self, exercise):
-        self.exercises.append(exercise)
+    def pievienot_vingrinajumu(self, vingrinajums):
+        self.vingrinajumi.append(vingrinajums)
 
-    def display_plan(self):
-        print("Your Training Plan:")
-        for exercise in self.exercises:
-            print(exercise)
+    def paradit_planu(self):
+        print("Jūsu treniņa plāns:")
+        for vingrinajums in self.vingrinajumi:
+            print(vingrinajums)
 
 
-def main():
-    plan = TrainingPlan()
+def galvena_funkcija():
+    plans = TreninsPlans()
 
     while True:
-        print("\nChoose an option:")
-        print("1. Add Exercise")
-        print("2. View Training Plan")
-        print("3. Exit")
-        choice = input("Enter your choice: ")
+        print("\nIzvēlieties opciju:")
+        print("1. Pievienot vingrinājumu")
+        print("2. Skatīt treniņa plānu")
+        print("3. Iziet")
+        izvele = input("Ievadiet savu izvēli: ")
 
-        if choice == "1":
-            name = input("Enter exercise name: ")
-            sets = int(input("Enter number of sets: "))
-            reps = int(input("Enter number of reps per set: "))
-            exercise = Exercise(name, sets, reps)
-            plan.add_exercise(exercise)
-            print("Exercise added to your plan!")
-        elif choice == "2":
-            plan.display_plan()
-        elif choice == "3":
-            print("Exiting program...")
+        if izvele == "1":
+            nosaukums = input("Ievadiet vingrinājuma nosaukumu: ")
+            seti = int(input("Ievadiet setu skaitu: "))
+            atkartojums = int(input("Ievadiet atkārību skaitu uz setu: "))
+            vingrinajums = Vingrinajums(nosaukums, seti, atkartojums)
+            plans.pievienot_vingrinajumu(vingrinajums)
+            print("Vingrinājums pievienots jūsu plānam!")
+        elif izvele == "2":
+            plans.paradit_planu()
+        elif izvele == "3":
+            print("Programma tiek izslēgta...")
             break
         else:
-            print("Invalid choice! Please try again.")
+            print("Nepareiza izvēle! Lūdzu, mēģiniet vēlreiz.")
 
 
 if __name__ == "__main__":
-    main()
+    galvena_funkcija()
+
